@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <div id="mainLeft">
+    <h1 class="welcomeHeading">Welcome to the SOUND</h1>
+    <p class="welcomeText">
+      Fine editions of Brahms, Chopin, Reger, and Schumann for players who read with their ears and their eyes
+    </p>
+    <p class="welcomeText">
+      From intimate piano miniatures to chamber works and song cycles, each score is chosen for clarity, craft, and performance value.
+    </p>
+    <p class="welcomeText">
+      Browse by composer, compare editions at a glance, and find the next piece to live on your music stand.
+    </p>
+
+  </div>
+
+  <div id="mainRight">
+    <h1>Shop by category:</h1>
+    <div id="categorySelections">
+      {% for category in categories %}
+        <div class="category">
+          <!-- 卡片整体带链接，配合 .categoryCard 的 CSS -->
+          <a href="{{ url_for('category', categoryId=category[0]) }}" class="categoryCard">
+            <img
+              src="{{ url_for('static',
+                              filename='images/categories/' ~ category[1] ~ '.jpg') }}"
+              alt="{{ category[1] }} category image">
+            <div class="categoryName">
+              {{ category[1] }}
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

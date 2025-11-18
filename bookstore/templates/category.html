@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<main>
+  <section id="catLeft">
+    <!-- 左侧分类按钮 -->
+    {% for category in categories %}
+      {% if category[0] == selectedCategoryId %}
+        <!-- 当前选中分类：没有链接，使用 selectedCategory 样式 -->
+        <p class="selectedCategory">
+          {{ category[1] }}
+        </p>
+      {% else %}
+        <!-- 未选中分类：带链接，使用 notSelectedCategory 样式 -->
+        <p class="notSelectedCategory">
+          <a href="{{ url_for('category', categoryId=category[0]) }}">
+            {{ category[1] }}
+          </a>
+        </p>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  <section id="catRight">
+    <!-- 右侧书列表：循环 books（已经在 app.py 中按分类过滤过）-->
+    {% for book in books %}
+      <div class='book'>
+        <!-- 书封面图片：放在 static/images/books/ 目录下 -->
+        <div>
+          <img
+            src="{{ url_for('static', filename='images/books/' ~ book[6]) }}"
+            alt="{{ book[2] }}">
+        </div>
+
+        <div class='bookDetailBox'>
+          <!-- 书名 -->
+          <p class='bookTitle'>{{ book[2] }}</p>
+          <!-- 作者 -->
+          <p class='bookDetail'>by {{ book[3] }}</p>
+          <!-- ISBN -->
+          <p class='bookDetail'>ISBN: {{ book[4] }}</p>
+          <!-- 价格（保留两位小数） -->
+          <p class='bookPrice'>${{ '%.2f' | format(book[5]) }}</p>
+
+          <a class='actionButton' href='#'>Add to cart</a>
+
+          <!-- Read Now 按钮：只有 readNow == 1 时显示 -->
+          {% if book[7] == 1 %}
+            <a class='actionButton' href='#'>Read Now</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}

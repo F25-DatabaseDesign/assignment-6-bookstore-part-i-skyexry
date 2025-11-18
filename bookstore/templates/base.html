@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>the SOUND</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  </head>
+  <body>
+    <header>
+      <!-- 左侧：logo + 标题 -->
+      <div id="leftHeader">
+        <a href="{{ url_for('home') }}">
+          <img
+            src="{{ url_for('static', filename='images/misc/sound_logo.jpg') }}"
+            alt=" logo">
+        </a>
+        <!-- <h1>the SOUND</h1> -->
+        <h1 class="siteTitle">Fine Editions of Classical Scores</h1>
+
+      </div>
+
+      <!-- 中间：搜索框 + 分类下拉 -->
+      <div id="midHeader">
+        <form id="searchBoxForm" action="{{ url_for('search') }}" method="post">
+          <input id="searchBox" type="text" placeholder="Book Title Search" name="search">
+          <input id="searchIcon" type="image"
+                 src="{{ url_for('static', filename='images/misc/search-icon.png') }}"
+                 alt="search icon">
+        </form>
+
+        <div class="dropdown">
+          <p class="dropdownSelect">Select Category</p>
+          <div class="dropdownContent">
+            {% for category in categories %}
+              <!-- category[0] = categoryId, category[1] = categoryName -->
+              <p>
+                <a href="{{ url_for('category', categoryId=category[0]) }}">
+                  {{ category[1] }}
+                </a>
+              </p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧：购物车 + 登录 -->
+      <div id="rightHeader">
+        <div id="cartIcon">
+          <a href="#">
+            <img
+              src="{{ url_for('static', filename='images/misc/cart-icon.jpg') }}"
+              alt="shopping cart icon">
+          </a>
+        </div>
+        <div id="cartCount">1 item</div>
+        <div class="loginButton"><a href="#">login</a></div>
+      </div>
+    </header>
+
+    <main>{% block container %}{% endblock %}</main>
+
+    <footer>
+      <div id="footerLeft">
+        <p>&copy; 2025 the SOUND</p>
+        <a href="#">Contact Us</a>
+        <a href="#">Directions</a>
+      </div>
+      <div id="footerRight">
+        <a href="#">
+          <img src="{{ url_for('static', filename='images/misc/facebook-icon.jpg') }}"
+               alt="Facebook">
+        </a>
+        <a href="#">
+          <img src="{{ url_for('static', filename='images/misc/ig-icon.jpg') }}"
+               alt="Instagram">
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,622 @@
+/* ============================
+   Global styles
+   ============================ */
+
+body {
+    max-width: 1160px;
+    margin: 0 auto;
+    font: 1em normal Arial, sans-serif;
+    color: #111111;
+    background-color: #ffffff;
+}
+
+.siteTitle {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* ============================
+   Header
+   ============================ */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #000;
+}
+
+/* left header: logo + title */
+#leftHeader {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+#leftHeader img {
+    height: 70px;
+    width: auto;
+}
+
+/* 标语文字：Fine Editions of Classical Scores */
+#leftHeader .siteTitle {
+    margin: 0;
+    font-size: 0.95em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* middle header: search + category dropdown */
+#midHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+/* search box 容器：略微加一点留白和阴影 */
+#searchBoxForm {
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    width: 320px;              /* 与下拉菜单统一宽度 */
+    padding: 4px 10px;
+    border-radius: 999px;      /* 胶囊形 */
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+}
+
+/* 文本输入框 */
+#searchBox {
+    height: 26px;
+    border: none;
+    outline: none;
+    padding: 2px 4px;
+    flex: 1;
+    width: auto;
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+
+/* 焦点时给整个容器一点描边 */
+#searchBox:focus-visible {
+    outline: none;
+}
+
+#searchBoxForm:focus-within {
+    box-shadow: 0 0 0 1px #000000, 0 4px 10px rgba(0,0,0,0.10);
+}
+
+/* 放大镜图标 */
+#searchIcon {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+    flex: 0 0 18px;
+    cursor: pointer;
+}
+
+/* ============================
+   Dropdown (Select Category)
+   ============================ */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 4px;
+    width: 320px;              /* 宽度与 searchBoxForm 一致 */
+    box-sizing: border-box;
+}
+
+/* 顶部胶囊按钮 */
+.dropdownSelect {
+    width: 100%;
+    padding: 8px 20px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    display: block;
+    border-radius: 999px;
+    font-size: 0.85em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid #000000;
+    transition: background-color 0.15s ease,
+                color 0.15s ease,
+                box-shadow 0.15s ease,
+                transform 0.15s ease;
+}
+
+/* 下拉内容：宽度和按钮完全一致 */
+.dropdownContent {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;              /* 和 .dropdown 相同宽度 */
+    margin-top: 6px;
+    padding: 4px 0;
+    z-index: 1;
+    border-radius: 16px;
+    background-color: #000000;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+}
+
+/* 悬停按钮时展示下拉 */
+.dropdown:hover .dropdownContent {
+    display: block;
+}
+
+/* 按钮 hover 效果 */
+.dropdownSelect:hover {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    transform: translateY(-1px);
+}
+
+/* 下拉里的每一项 */
+.dropdownContent a {
+    display: block;
+    padding: 8px 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.dropdownContent a:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+}
+
+/* ============================
+   right header: cart + login
+   ============================ */
+
+#rightHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#rightHeader img {
+    width: 60px;
+    height: auto;
+}
+
+#cartCount {
+    min-width: 70px;
+    font-size: 0.9em;
+    color: #333333;
+}
+
+/* login 胶囊按钮，风格与 Select Category 呼应 */
+.loginButton {
+    border-radius: 999px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    min-width: 82px;
+    height: 32px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.15s ease,
+                color 0.15s ease,
+                box-shadow 0.15s ease,
+                transform 0.15s ease;
+}
+
+.loginButton a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 0.85em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.loginButton:hover {
+    background-color: #000000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    transform: translateY(-1px);
+}
+
+.loginButton:hover a {
+    color: #ffffff;
+}
+
+/* ============================
+   Footer
+   ============================ */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: 10px;
+    margin-top: 20px;
+    padding: 15px 10px;
+    font-size: 0.8em;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#footerLeft {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 320px;
+}
+
+#footerLeft p {
+    margin: 0;
+}
+
+#footerLeft a {
+    padding-top: 0;
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 15px;
+}
+
+#footerLeft a:hover {
+    text-decoration: underline;
+    color: #dddddd;
+}
+
+#footerRight {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    width: 80px;
+}
+
+#footerRight img {
+    width: 20px;
+    height: auto;
+}
+
+#notFoundMessage {
+    color: red;
+}
+
+/* ============================
+   Buttons / inputs (通用)
+   ============================ */
+
+.commandButton {
+    height: 30px;
+    width: 150px;
+    border-radius: 6px;
+    margin: 20px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #000000;
+    font-size: smaller;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.commandButton:hover {
+    background-color: #333333;
+}
+
+.submitButton {
+    height: 22px;
+    border-radius: 6px;
+    border: none;
+    margin: 6px 0 0 4px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #000000;
+    color: white;
+    font-size: 0.875em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: #333333;
+}
+
+/* ============================
+   Main layout
+   ============================ */
+
+main {
+    display: flex;
+    margin: 5px 10px 0 10px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    background-color: #fafafa;
+}
+
+h1 {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+/* ============================
+   Index page
+   ============================ */
+
+/* left welcome section */
+
+#mainLeft {
+    flex: 0 0 40%;
+    min-width: 320px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+/* 标题（Welcome to the SOUND） */
+.welcomeHeading {
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 18px 0;
+}
+
+/* 文案段落 */
+#mainLeft p {
+    font-size: 0.95em;
+    line-height: 1.8;
+    margin: 6px 0;
+    color: #444444;
+}
+
+/* 控制段落宽度，让版面更紧凑 */
+.welcomeText {
+    max-width: 440px;
+}
+
+/* right category section */
+
+#mainRight {
+    flex: 1;
+    border-left: 1px solid black;
+    padding: 40px 30px 30px 30px;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#mainRight > h1 {
+    font-size: 1.3em;
+    margin: 0 0 10px 0;
+}
+
+#categorySelections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+/* category cards */
+
+.category {
+    flex: 0 1 calc(50% - 24px);
+    max-width: 260px;
+}
+
+.categoryCard {
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #111111;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.categoryCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18pxrgba(0,0,0,0.15);
+}
+
+.category img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.categoryName {
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* ============================
+   Category page
+   ============================ */
+
+#catLeft {
+    width: 320px;
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 20px 10px;
+    gap: 10px;
+}
+
+/* 左侧四个分类按钮：胶囊形 */
+.notSelectedCategory,
+.selectedCategory {
+    height: 32px;
+    min-width: 180px;
+    padding: 0 20px;
+    border-radius: 999px;
+    margin: 4px 0;
+    text-align: center;
+    line-height: 32px;
+    font-size: 0.8em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-sizing: border-box;
+}
+
+/* 未选中状态：黑底白字 */
+.notSelectedCategory {
+    background-color: #000000;
+    border: 1px solid #000000;
+}
+
+.notSelectedCategory a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* 选中状态：白底黑字 */
+.selectedCategory {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: #000000;
+}
+
+.selectedCategory a {
+    color: #000000;
+    text-decoration: none;
+}
+
+/* hover 效果 */
+.notSelectedCategory:hover,
+.selectedCategory:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    transform: translateY(-1px);
+}
+
+.notSelectedCategory a:hover,
+.selectedCategory a:hover {
+    color: inherit;
+}
+
+/* right side book list */
+
+#catRight {
+    padding: 20px 20px 20px 30px;
+    box-shadow: inset 0 0 0 20px #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fafafa;
+}
+
+/* book cards */
+
+.book {
+    width: 350px;
+    margin: 20px;
+    display: flex;
+    align-items: center;      /* 垂直居中图片和文字 */
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* 图片区域：保持尺寸但水平居中一点 */
+.book img {
+    max-width: 120px;
+    height: auto;
+    margin: 0 18px;
+    display: block;
+    object-fit: contain;      /* 比例不同也不会被拉伸 */
+}
+
+.bookDetailBox {
+    margin: 16px 0 16px 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875em;
+}
+
+.bookTitle {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.bookDetail {
+    margin-top: 2px;
+    font-size: 0.875em;
+}
+
+.bookPrice {
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+/* Add to cart / Read now 胶囊形 */
+.actionButton {
+    display: inline-block;
+    padding: 0 14px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 999px;
+    margin-top: 6px;
+    margin-right: 6px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 0.78em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+}
+
+.actionButton:hover {
+    background-color: #333333;
+}
+
+/* ============================
+   Error page
+   ============================ */
+
+.errorContainer {
+    padding: 60px 40px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.errorTitle {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.errorText {
+    margin: 6px 0;
+}
+
+.errorText.small {
+    font-size: 0.9em;
+    color: #555555;
+}
+
+.errorText a {
+    color: #000000;
+    text-decoration: underline;
+}
